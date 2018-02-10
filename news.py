@@ -44,7 +44,9 @@ def error_percent(query3):
     c.execute(query3)
     results = c.fetchall()
     for e in results:
-        print (e)
+        date=(e[0])
+        per_err=(e[1])
+        print (date.strftime('%B %d, %Y') + ' ' + '--' + ' ' + str(round(per_err,1)) + '%' + ' ' + 'errors')
     db.close()
 
 
@@ -57,6 +59,4 @@ if __name__ == '__main__':
     print("\n")
     print ("Days did more than 1% of requests lead to errors")
     error_percent(query3)
-
-
 
