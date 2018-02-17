@@ -34,7 +34,7 @@ This reporting tool is a Python program using the psycopg2 module to connect to 
   3. Download the newsdata.zip from here. (https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip)
   4. Unzip and put this file[newsdata.sql] into the vagrant directory, which is shared with your virtual machine.
   5. Copy the newsdata.sql file and content of this current repository, by either downloading or cloning it from
-     [Here](https://github.com/sagarchoudhary96/Log-Analysis)
+     [Here](https://github.com/keshibat/Logs-Analysis)
 
 
 #### Launching the Virtual Machine:
