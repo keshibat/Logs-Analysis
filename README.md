@@ -89,78 +89,40 @@ ORDER by num_views desc;
 
 #### the total requests for that day
 '''
-CREATE VIEW total_Rqst AS
-SELECT time ::timestamp::date,
-count(*) AS num_rqst
+CREATE VIEW total_request AS
+SELECT count(*) AS count,
+       date(time) AS date
 FROM log
-GROUP by time ::timestamp::date;
-ORDER by time ::timestamp::date;
+GROUP BY date
+ORDER BY count DESC;
 '''
 
 
 #### the total Error requests for that day
 '''
-CREATE VIEW total_Error AS
-SELECT time ::timestamp::date,
-count(*) AS num_error
+CREATE VIEW total_error AS
+SELECT count(*) AS count,
+       date(time) AS date
 FROM log
-WHERE status != '200 OK'
-GROUP by time ::timestamp::date
-ORDER by time ::timestamp::date;
+Where status!='200 OK'
+GROUP BY date
+ORDER BY count DESC;
 '''
 
 #### the percent error for that day
 '''
 CREATE VIEW percent_error AS
-SELECT total_Rqst.time,
-       (total_Error.num_error::float / total_Rqst.num_rqst::float)* 100 AS perc
-FROM total_Rqst join total_Error on total_Rqst.time = total_Error.time;
+SELECT total_request.date,
+       (total_error.count::float / total_request.count::float)* 100 AS perc
+from total_request,
+     total_error
+where total_error.date=total_request.date;
 '''
 
 
 #### The Python Reporting Tool
   * After the Views have been created, inside the virtual machine run `news.py` with -
   ```python
-  python3 news.py
+  python news.py
   ```
   * The python file `news.py` executes 3 functions, printing out the answers onto the terminal.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
