@@ -22,7 +22,7 @@ def popluar_article(query1):
     c.execute(query1)
     results = c.fetchall()
     for t, v in results:
-        print ('"{0}" -- {1} views'.format(t, v))
+        print('"{0}" -- {1} views'.format(t, v))
     db.close()
 
 
@@ -32,7 +32,7 @@ def poplular_author(query2):
     c.execute(query2)
     results = c.fetchall()
     for t, v in results:
-        print ('"{0}" -- {1} views'.format(t, v))
+        print('"{0}" -- {1} views'.format(t, v))
     db.close()
 
 
@@ -42,16 +42,16 @@ def error_percent(query3):
     c.execute(query3)
     results = c.fetchall()
     for t, v in results:
-        print ("{} -- {:.1f}% errors".format(t.strftime("%B %d, %y"), v))
+        print("{} -- {:.1f}% errors".format(t.strftime("%B %d, %y"), v))
     db.close()
 
 
 if __name__ == '__main__':
-    print ("The 3 most poplular articles of all time are:")
+    print("The 3 most poplular articles of all time are:")
     popluar_article(query1)
     print("\n")
-    print ("The most popular article authors of all time are")
+    print("The most popular article authors of all time are")
     poplular_author(query2)
     print("\n")
-    print ("Days did more than 1% of requests lead to errors")
+    print("Days did more than 1% of requests lead to errors")
     error_percent(query3)
